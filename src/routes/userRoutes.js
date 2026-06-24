@@ -1,0 +1,12 @@
+const express = require("express");
+const authMiddleware = require("../middlewares/authMiddleware");
+const permissionMiddleware = require("../middlewares/permissionMiddleware");
+const userController = require("../controllers/userController");
+const router = express.Router();
+router.use(authMiddleware);
+router.use(permissionMiddleware("manage_users"));
+router.get("/", userController.getUsers);
+router.post("/", userController.createUser);
+router.put("/:id", userController.updateUser);
+router.delete("/:id", userController.deleteUser);
+module.exports = router;

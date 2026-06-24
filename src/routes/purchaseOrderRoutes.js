@@ -1,0 +1,12 @@
+const express = require("express");
+const controller = require("../controllers/purchaseOrderController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const permissionMiddleware = require("../middlewares/permissionMiddleware");
+const router = express.Router();
+router.use(authMiddleware);
+router.use(permissionMiddleware("manage_purchases"));
+router.post("/", controller.createPurchaseOrder);
+router.put("/:id", controller.updatePurchaseOrder);
+router.get("/", controller.getPurchaseOrders);
+router.get("/:id", controller.getPurchaseOrderById);
+module.exports = router;

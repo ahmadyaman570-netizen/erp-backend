@@ -1,0 +1,12 @@
+const express = require("express");
+const controller = require("../controllers/salesQuotationController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const permissionMiddleware = require("../middlewares/permissionMiddleware");
+const router = express.Router();
+router.use(authMiddleware);
+router.use(permissionMiddleware("manage_sales"));
+router.post("/", controller.createSalesQuotation);
+router.put("/:id", controller.updateSalesQuotation);
+router.get("/", controller.getSalesQuotations);
+router.get("/:id", controller.getSalesQuotationById);
+module.exports = router;

@@ -1,0 +1,7 @@
+module.exports = {
+    INVENTORY: "1400",
+    ACCOUNTS_PAYABLE: "2100",
+    ACCOUNTS_RECEIVABLE: "1300",
+    SALES_REVENUE: "4000",
+    COST_OF_GOODS_SOLD: "5100"
+};
